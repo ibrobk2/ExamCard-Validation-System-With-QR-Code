@@ -16,7 +16,7 @@ $errors = array();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECV::Login Page</title>
+    <title>ECV::Home Page</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -115,7 +115,7 @@ $errors = array();
 } */
 
 .marquee {
-    width: 100%;
+    width: 110%;
     line-height: 50px;
     background-color: green;
     color: white;
@@ -125,6 +125,7 @@ $errors = array();
     justify-contents: center;
     justify-self: center;
     border-radius: 6px;
+    margin-left: -170px;
 }
 .marquee h1 {
     display: inline-block;
@@ -136,11 +137,41 @@ $errors = array();
     100% { transform: translate(-100%, 0); }
 }
 
+.images{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 7px -350px 0 7px;
+  /* text-align:center; */
+  
+}
+footer p{
+  margin-top: 340px;
+  text-align:center;
+}
+
 
     </style>
 </head>
 <body style="background-image: linear-gradient(90deg, darkgreen, cyan); background-reapeat:none;">
     <?php //include "header.php" ;?>
+    <div class="images">
+          <div class="img">
+            <img src="images/alqalam_logo.png" alt="" width="20%">
+
+          </div>
+          <div class="img">
+            <!-- <marquee> -->
+            <div class="marquee">
+            <h1 style="color:white; font-size:44px;">Exam Card Validation System With QR Code</h1>
+
+            </div>
+    <!-- </marquee> -->
+          </div>
+          <div class="img">
+            <img src="images/qrcode.png" alt="" width="20%" style="border-radius:50%">
+
+          </div>
+        </div>
 <div class="container">
     <?php  
         if(isset( $_SESSION['logError'])):
@@ -149,27 +180,14 @@ $errors = array();
     <?php 
     session_unset();
         endif; ?>
-        <!-- <marquee> -->
-            <div class="marquee">
-            <h1 style="color:white; font-size:44px;">Exam Card Validation System With QR Code</h1>
-
-            </div>
-    <!-- </marquee> -->
-        <img src="images/qrcode.png" alt="" width="20%" style="border-radius:50%">
-
-    <h3 style="color:white;">User Login</h3>
-        <div class="form justify-centered">
-
-            <form action="index.php" class="form-group" method="post">
-            
-            <?php   include("process.php");
-                    include("errors.php"); 
-            ?>
-                <input type="text" placeholder="Enter Username" class="form-control" name="username"><br>
-                <input type="password" placeholder="Enter Password" class="form-control" name="password"><br>
-                <button class="btn btn-primary form-control" name="user_login">Login</button><br>
-            </form>
-        </div>
+        <div class="dash">
+         <a href="student_login.php"> <div class="as btn btn-primary">Student Login</div></a>
+          <a href="admin_login.php"><div class="as btn btn-success">Admin Login</div></a>
+        </div><br>
+        <p style="color:white;">Welcome to Exam Card Validation System using QR Code. This system was designed to validate student examination card using a QR Code Scanner. It consists of two users (i.e Admin and Students).</p>
     </div>
+    <footer>
+      <p>Copyright &copy; 2022 Department of Computer Science, Alqalam University, Katsina</p>
+    </footer>
 </body>
 </html>

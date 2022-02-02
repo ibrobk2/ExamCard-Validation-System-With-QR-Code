@@ -9,14 +9,51 @@ $errors = array();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+<script>
+      // Jquery Code for adding courses
+      $(document).ready(function(){
+        var tr = 
+            "<div class='row'>"+
+            "<select name='state' id='' class='form-control col-sm states'>"+
+                "<option value='select'>Select Course>></option>"+
+                "<option value='Abia'>Abia</option>"+
+                "<option value='Adamawa'>Adamawa</option>"+
+                "<option value='Akwa Ibom'>Akwa Ibom</option>"+
+                "<option value='Anambra'>Anambra</option>"+                    
+            "</select>"+
+            "<a href='javascript:void(0);' class='form-control col-sm btn btn-danger deleteRow'><i class='fas fa-trash'></i>&nbsp;Delete</a>"+
+            "</div>";
+            //Adding Row
+        $(".addRow").click(function(){
+           
+        $(".addCourse").append(tr);
+          });
+         
+         
+        });
+ //Deleting Row Section
+        $(document).ready(function(){
+
+        $(".deleteRow").click(function(){
+           
+           $this.remove();
+             });
+        });
+
+   
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Student Records</title>
+    <title>Student Course Registration</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="index.css"> -->
+    <script src="jquery/jquery-3.6.0.js"></script>
     <style>
            * {
     margin: 0px;
@@ -142,18 +179,28 @@ button:hover{
      
     outline: 0; 
   } 
+h3{
+  
+}
 
     </style>
+    
+    
 </head>
-<body style="background-image: url('images/new_born.jpg'); background-repeat: no-repeat; background-size: cover;">
+<body style="background-image: url('images/alqalam_logo.png'); background-repeat: no-repeat; background-size: 50%;opacity:0.8;">
     <?php include "header.php" ;?>
 
     <script>
+
         function hover(){
-            document.getElementById('btn').style.backgroundColor = "blue";
+            document.getElementById('btn').style.backgroundColor = "palegreen";
+            document.getElementById('btn').style.color = "darkgreen";
+
         }
         function mouseout(){
             document.getElementById('btn').style.backgroundColor = "green";
+            document.getElementById('btn').style.color = "white";
+
    
         }
     </script>
@@ -161,18 +208,32 @@ button:hover{
     <h3 style="color:green">Course Registration Form</h3>
         <div class="form justify-centered">
 
-            <form action="birth_reg.php" class="form-group" method="post">
+            <form action="courseReg.php" class="form-group" method="post">
             <?php include("errors.php") ; ?>
+
+    <div class="row" style="padding: 5px; gap: 7px;">
+        <h4 style="color:#777;">Student Details</h3>
+    </div>
     <div class="row" style="padding: 5px; gap: 7px;">
     <input type="text" placeholder="Registration Number" class="form-control col-sm" name="reg_centre">
-    <input type="text" placeholder="Town/Village" class="form-control col-sm" name="town">
+    <input type="text" placeholder="Full Name" class="form-control col-sm" name="fullName">
+
 
     </div>
 
+   
+
+    <div class="row" >
+        <input type="text" placeholder="Faculty" class="form-control col-sm" name="faculty" style="border: solid 1px #517B97;">
+        <input type="text" placeholder="Department" class="form-control col-sm" name="department">
+    </div>
+    <hr style="border:2px double green;">
     <div class="row" style="padding: 5px; gap: 7px;">
-        <input type="text" placeholder="L.G.A." class="form-control col-sm" name="LGA" style="border: solid 1px #517B97;">
+        <h4 style="color:#777;">Select Courses</h3>
+    </div>
+    <div class="row addCourse" style="padding: 5px; gap: 7px;">
         <select name="state" id="" class="form-control col-sm states">
-            <option value="select">Select State</option>
+            <option value="select">Select Course>></option>
             <option value="Abia">Abia</option>
             <option value="Adamawa">Adamawa</option>
             <option value="Akwa Ibom">Akwa Ibom</option>
@@ -189,28 +250,13 @@ button:hover{
             <option value="Enugu">Enugu</option>
             <option value="Gombe">Gombe</option>
             <option value="Imo">Imo</option>
-            <option value="Jigawa">Jigawa</option>
-            <option value="Kaduna">Kaduna</option>
-            <option value="Kano">Kano</option>
-            <option value="Katsina">Katsina</option>
-            <option value="Kebbi">Kebbi</option>
-            <option value="Kogi">Kogi</option>
-            <option value="Kwara">Kwara</option>
-            <option value="Lagos">Lagos</option>
-            <option value="Nasarawa">Nasarawa</option>
-            <option value="Niger">Niger</option>
-            <option value="Ogun">Ogun</option>
-            <option value="Ondo">Ondo</option>
-            <option value="Osun">Osun</option>
-            <option value="Oyo">Oyo</option>
-            <option value="Plateu">Plateu</option>
-            <option value="Rivers">Rivers</option>
-            <option value="Sokoto">Sokoto</option>
-            <option value="Taraba">Taraba</option>
-            <option value="Yobe">Yobe</option>
-            <option value="Zamfara">Zamfara</option>
-            <option value="FCT">FCT Abuja</option>
+            
         </select>
+        <a href="javascript:void(0)" class="form-control col-sm btn btn-danger deleteRow"><i class="fas fa-trash"></i>&nbsp;Delete</a>
+
+      </div>
+      <div class="row" style="padding: 5px; gap: 7px;">
+        <a href="javascript:void(0)" class="form-control col-sm btn btn-success addRow"><i class="fas fa-plus"></i>&nbsp;Add Course</a>
 
         <!-- <input type="text" placeholder="Enter Username" class="form-control col-sm" name="user"> -->
     </div>
@@ -220,7 +266,7 @@ button:hover{
 
             
                 
-                <button class="btn btn-primary form-control" name="birth_register" style="width:70%; font-weight: bold; color: #fff; background: darkgreen; border:none; ouline:none;" id="btn" onmouseover="hover();" onmouseout="mouseout();">Register</button><br>
+                <button class="btn btn-primary form-control" name="courseReg" style="width:60%; font-weight: bold; color: #fff; background: darkgreen; border:none; outline:none;margin-top:12px;" id="btn" onmouseover="hover();" onmouseout="mouseout();"><i class="fas fa-registered" style="font-size:20px;"></i>egister</button><br>
             </form>
         </div>
     </div>

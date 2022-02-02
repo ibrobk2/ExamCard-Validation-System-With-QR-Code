@@ -34,10 +34,10 @@
     <a class="nav-link active" href="admin_dashboard.php" >Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="birth_reg.php" style="color:#fff; font-weight: bold;">Course Registration</a>
+    <a class="nav-link" href="courseReg.php" style="color:#fff; font-weight: bold;">Course Registration</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="death_reg.php" style="color:#fff; font-weight: bold;">Print_Exam_Card</a>
+    <a class="nav-link" href="examCard.php" style="color:#fff; font-weight: bold;">Print_Exam_Card</a>
   </li>
   <!-- <li class="nav-item">
     <a class="nav-link" href="birth_record.php" style="color:#fff; font-weight: bold;">Manage_Birth_Record</a>

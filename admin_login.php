@@ -3,47 +3,48 @@
 $username = "";
 $email    = "";
 $errors = array(); 
+
     include_once "server.php";
-    include_once "process.php";
+    // include_once "process.php";
+
+    
     ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Card Printing</title>
+    <title>ECV::Admin Login Page</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="index.css"> -->
+    <!--<link rel="stylesheet" href="index.css">-->
     <style>
-           * {
+       * {
     margin: 0px;
     padding: 0px;
   }
 .container{
-    margin-top: -220px;
+    margin-top: 20px;
     text-align: center;
     color: blue;
    
 }
 
   body {
-    
-    /* background-image: url('images/new_born.jpg'); */
-      
     font-size: 120%;
     background: #F8F8FF;
   }
   
  
   form, .content {
-    width: 65%;
+    width: 30%;
     margin: 0px auto;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #B0C4DE;
-    background: rgba(255,255,255,0.5);
+    background: white;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 2px 4px green;
 
@@ -135,60 +136,38 @@ $errors = array();
     100% { transform: translate(-100%, 0); }
 }
 
-button:hover{
-    background: blue;
-}
-  .states{
-     
-    outline: 0; 
-  } 
 
     </style>
 </head>
-<body style="background-image: url('images/new_born.jpg'); background-repeat: no-repeat; background-size: cover;">
-    <?php include "header.php" ;?>
+<body style="background-image: linear-gradient(90deg, darkgreen, cyan); background-reapeat:none;">
+    <?php //include "header.php" ;?>
+<div class="container">
+    <?php  
+        if(isset( $_SESSION['logError'])):
+    ?>
+    <h4 style="color:red;"><?php echo  $_SESSION['logError']; ?></h4>
+    <?php 
+    session_unset();
+        endif; ?>
+        <!-- <marquee> -->
+            <div class="marquee">
+            <h1 style="color:white; font-size:44px;">Exam Card Validation System With QR Code</h1>
 
-    <script>
-        function hover(){
-            document.getElementById('btn').style.backgroundColor = "palegreen";
-            document.getElementById('btn').style.color = "darkgreen";
-        }
-        function mouseout(){
-            document.getElementById('btn').style.backgroundColor = "green";
-            document.getElementById('btn').style.color = "white";
-
-   
-        }
-    </script>
-    <div class="logo" style="text-align:center;">
-    <img src="images/alqalam_logo.png" alt="">
-
-    </div>
-<div class="container" style="margin-top: 25px; color: white;">
-    <h3 style="color:green">Print Examination Card</h3>
+            </div>
+    <!-- </marquee> -->
+        <!-- <img src="images/qrcode.png" alt="" width="20%" style="border-radius:50%"> -->
+        <i class="fa fa-user" style="font-size:123px;color:green;opacity:0.6;margin-top:12px;"></i>
+    <h3 style="color:white;">Admin Login</h3>
         <div class="form justify-centered">
 
-            <form action="birth_reg.php" class="form-group" method="post">
-            <?php include("errors.php") ; ?>
-    <div class="row" style="padding: 5px; gap: 7px;">
-    <input type="text" placeholder="Registration Number" class="form-control col-sm" name="reg_centre">
-    <!-- <input type="text" placeholder="Town/Village" class="form-control col-sm" name="town"> -->
-
-    </div>
-
-  
-        <!-- <input type="text" placeholder="Enter Username" class="form-control col-sm" name="user"> -->
-    </div>
-
-    
-    </div>
-
+            <form action="index.php" class="form-group" method="post">
             
-                <br>
-                <center>
-                <button class="btn btn-primary form-control" name="examCard" style="width:50%; font-weight: bold; color: #fff; background: darkgreen; border:none; ouline:none;" id="btn" onmouseover="hover();" onmouseout="mouseout();">Generate Exam Card</button><br>
-
-                </center>
+            <?php   include("process.php");
+                    include("errors.php"); 
+            ?>
+                <input type="text" placeholder="Enter Username" class="form-control" name="username"><br>
+                <input type="password" placeholder="Enter Password" class="form-control" name="password"><br>
+                <button class="btn btn-primary form-control" name="admin_login">Login</button><br>
             </form>
         </div>
     </div>
