@@ -6,6 +6,10 @@ $errors = array();
 
     include_once "server.php";
     // include_once "process.php";
+    //CHECKING IF STUDENT REGISTERATION IS SUCCESSFUL
+    if(isset($_SESSION['success'])){
+      echo "<script>".$_SESSION['success']."</script>";
+    }
 
     
     ?>
@@ -162,15 +166,16 @@ $errors = array();
     <h3 style="color:white;">Student Login</h3>
         <div class="form justify-centered">
 
-            <form action="index.php" class="form-group" method="post">
+            <form action="student_login.php" class="form-group" method="post">
             
             <?php   include("process.php");
                     include("errors.php"); 
             ?>
-                <input type="text" placeholder="Enter Username" class="form-control" name="username"><br>
+                <input type="text" placeholder="Enter Registration Number" class="form-control" name="regNo"><br>
                 <input type="password" placeholder="Enter Password" class="form-control" name="password"><br>
                 <button class="btn btn-primary form-control" name="student_login">Login</button><br>
             </form>
+            <p>Not Registered? Please register <a href="student_reg.php">Here</a></p>
         </div>
     </div>
 </body>

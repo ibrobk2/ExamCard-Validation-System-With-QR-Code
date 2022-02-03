@@ -40,7 +40,7 @@ include_once "server.php";
                 <div class="sidebar-brand-icon rotate-n-0">
                     <i class="fas fa-user"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3"><?php if(isset($_SESSION['admin'])){echo "Welcome ".$_SESSION['admin'];} ?> </div>
+                <div class="sidebar-brand-text mx-3"><?php if(isset($_SESSION['username'])){echo "Welcome ".$_SESSION['username'];} ?> </div>
             </a>
 
             <!-- Divider -->
@@ -128,9 +128,9 @@ include_once "server.php";
 
             <!-- Nav Item - Birth Registration -->
             <li class="nav-item">
-                <a class="nav-link" href="birth_reg.php">
+                <a class="nav-link" href="examCard.php">
                     <i class="fas fa-fw fa-calendar"></i>
-                    <span>Manage Student Record</span></a>
+                    <span>Validate Student</span></a>
             </li>
 
                    <!-- Nav Item - Death registration
@@ -280,14 +280,13 @@ include_once "server.php";
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="index.php" id="messagesDropdown" role="button" onclick="<?php session_unset(); ?>"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="index.php" id="messagesDropdown" role="button" onclick="<?php session_unset(); ?>">
                                 <i class="fas fa-lock fa-fw"></i>
                                 Logout
                                 <!-- <span class="badge badge-danger badge-counter">Logout</span> -->
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
@@ -341,7 +340,7 @@ include_once "server.php";
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
+                            </div> -->
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -398,14 +397,14 @@ include_once "server.php";
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                        <a href="records.php">
+                                        <a href="examCard.php">
                                             <div class="col-auto">
                                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                             </div>
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Manage Students Record</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Student Records</div>
+                                                Validate Students</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Exam Card Validation</div>
                                         </div>
                                         </a>
                                     </div>
@@ -437,7 +436,7 @@ include_once "server.php";
                         </div> -->
 
                         <!-- Tasks Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" style="text-align: center;">
+                        <!-- <div class="col-xl-3 col-md-6 mb-4" style="text-align: center;">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -465,14 +464,14 @@ include_once "server.php";
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4" style="text-align: center;">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                        <a href="death_record.php">
+                                        <a href="courseReg.php">
                                             <div class="col-auto">
                                                 <i class="fas fa-comments fa-2x text-gray-300"></i>
                                             </div>

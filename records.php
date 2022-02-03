@@ -146,7 +146,7 @@ button:hover{
     </style>
 </head>
 <body style="background-image: url('images/new_born.jpg'); background-repeat: no-repeat; background-size: cover;">
-    <?php include "header.php" ;?>
+    <?php include "admin_header.php" ;?>
 
     <script>
         function hover(){
@@ -158,71 +158,10 @@ button:hover{
         }
     </script>
 <div class="container" style="margin-top: 25px; color: white;">
-    <h3 style="color:green">Course Registration Form</h3>
-        <div class="form justify-centered">
+    <h3 style="color:green">Manage Student Records</h3>
+       
 
-            <form action="birth_reg.php" class="form-group" method="post">
-            <?php include("errors.php") ; ?>
-    <div class="row" style="padding: 5px; gap: 7px;">
-    <input type="text" placeholder="Registration Number" class="form-control col-sm" name="reg_centre">
-    <input type="text" placeholder="Town/Village" class="form-control col-sm" name="town">
-
-    </div>
-
-    <div class="row" style="padding: 5px; gap: 7px;">
-        <input type="text" placeholder="L.G.A." class="form-control col-sm" name="LGA" style="border: solid 1px #517B97;">
-        <select name="state" id="" class="form-control col-sm states">
-            <option value="select">Select State</option>
-            <option value="Abia">Abia</option>
-            <option value="Adamawa">Adamawa</option>
-            <option value="Akwa Ibom">Akwa Ibom</option>
-            <option value="Anambra">Anambra</option>
-            <option value="Bauchi">Bauchi</option>
-            <option value="Bayelsa">Bayelsa</option>
-            <option value="Benue">Benue</option>
-            <option value="Borno">Borno</option>
-            <option value="Cross River">Cross River</option>
-            <option value="Delta">Delta</option>
-            <option value="Ebonyi">Ebonyi</option>
-            <option value="Edo">Edo</option>
-            <option value="Ekiti">Ekiti</option>
-            <option value="Enugu">Enugu</option>
-            <option value="Gombe">Gombe</option>
-            <option value="Imo">Imo</option>
-            <option value="Jigawa">Jigawa</option>
-            <option value="Kaduna">Kaduna</option>
-            <option value="Kano">Kano</option>
-            <option value="Katsina">Katsina</option>
-            <option value="Kebbi">Kebbi</option>
-            <option value="Kogi">Kogi</option>
-            <option value="Kwara">Kwara</option>
-            <option value="Lagos">Lagos</option>
-            <option value="Nasarawa">Nasarawa</option>
-            <option value="Niger">Niger</option>
-            <option value="Ogun">Ogun</option>
-            <option value="Ondo">Ondo</option>
-            <option value="Osun">Osun</option>
-            <option value="Oyo">Oyo</option>
-            <option value="Plateu">Plateu</option>
-            <option value="Rivers">Rivers</option>
-            <option value="Sokoto">Sokoto</option>
-            <option value="Taraba">Taraba</option>
-            <option value="Yobe">Yobe</option>
-            <option value="Zamfara">Zamfara</option>
-            <option value="FCT">FCT Abuja</option>
-        </select>
-
-        <!-- <input type="text" placeholder="Enter Username" class="form-control col-sm" name="user"> -->
-    </div>
-
-    
-    </div>
-
-            
-                
-                <button class="btn btn-primary form-control" name="birth_register" style="width:70%; font-weight: bold; color: #fff; background: darkgreen; border:none; ouline:none;" id="btn" onmouseover="hover();" onmouseout="mouseout();">Register</button><br>
-            </form>
-        </div>
+           
     </div>
 </body>
 </html>

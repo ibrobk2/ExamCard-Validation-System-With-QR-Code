@@ -1,11 +1,42 @@
-<?php  
-// initializing variables
-$username = "";
-$email    = "";
-$errors = array(); 
-    include_once "server.php";
-    include_once "process.php";
-    ?>
+<?php //session_start();
+include_once "server.php";
+$reg = "";
+$fullName = "";
+
+if(isset($_POST['examCard'])){
+  $reg = $_POST['reg_number'];
+
+  $_SESSION['reg'] = $reg;
+
+  $query = "SELECT * FROM students WHERE regNo = '$reg'";
+  $result = mysqli_query($server, $query);
+
+  if(empty($reg)){
+    echo "<script>alert('Registration Number should Not be empty')</script>";
+  }else{
+
+  if($row = mysqli_fetch_assoc($result)){
+
+  $_SESSION['fname'] = $row['fullName'];
+  $_SESSION['department'] = $row['department'];
+  $_SESSION['faculty'] = $row['faculty'];
+  $_SESSION['level'] = $row['level'];
+
+  header("location: qrcode.php");
+  exit();
+
+  
+    // echo "Welcome ".$_SESSION['fname']."<br>";
+    // echo "Your are in ".$_SESSION['department']." Department"."<br>";
+    // echo "Your faculty is ". $_SESSION['faculty'];
+
+
+  }
+}
+
+}
+  
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,10 +199,12 @@ button:hover{
     <h3 style="color:green">Print Examination Card</h3>
         <div class="form justify-centered">
 
-            <form action="birth_reg.php" class="form-group" method="post">
-            <?php include("errors.php") ; ?>
+            <form action="examCard.php" class="form-group" method="post">
+             <?php   //include("process.php");
+                    //include("errors.php");  
+            ?>
     <div class="row" style="padding: 5px; gap: 7px;">
-    <input type="text" placeholder="Registration Number" class="form-control col-sm" name="reg_centre">
+    <input type="text" placeholder="Registration Number" class="form-control col-sm" name="reg_number">
     <!-- <input type="text" placeholder="Town/Village" class="form-control col-sm" name="town"> -->
 
     </div>

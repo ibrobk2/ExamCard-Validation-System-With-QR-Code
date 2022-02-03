@@ -4,6 +4,8 @@ $username = "";
 $email    = "";
 $errors = array(); 
 
+
+
     include_once "server.php";
     // include_once "process.php";
 
@@ -160,7 +162,7 @@ $errors = array();
     <h3 style="color:white;">Admin Login</h3>
         <div class="form justify-centered">
 
-            <form action="index.php" class="form-group" method="post">
+            <form action="admin_login.php" class="form-group" method="post">
             
             <?php   include("process.php");
                     include("errors.php"); 

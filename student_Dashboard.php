@@ -40,7 +40,7 @@ include_once "server.php";
                 <div class="sidebar-brand-icon rotate-n-0">
                     <i class="fas fa-user"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3"><?php echo "Welcome Student" ?> </div>
+                <div class="sidebar-brand-text mx-3"><?php if(isset($_SESSION['student'])){echo "Welcome".$_SESSION['student'];} ?> </div>
             </a>
 
             <!-- Divider -->
@@ -126,16 +126,16 @@ include_once "server.php";
                 </div>
             </li> --> 
 
-            <!-- Nav Item - Birth Registration -->
+            <!-- Nav Item - Course Registration -->
             <li class="nav-item">
-                <a class="nav-link" href="birth_reg.php">
+                <a class="nav-link" href="courseReg.php">
                     <i class="fas fa-fw fa-calendar"></i>
                     <span>Course Registration</span></a>
             </li>
 
-                   <!-- Nav Item - Death registration-->
+                   <!-- Nav Item - Print Exam Card-->
                    <li class="nav-item">
-                    <a class="nav-link" href="death_reg.php">
+                    <a class="nav-link" href="examCard.php">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span> Print Exam Card</span></a>
                 </li> 
@@ -387,7 +387,7 @@ include_once "server.php";
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Student Dashboard</h1>
                     </div>
 
                     <div class="row">
@@ -441,7 +441,7 @@ include_once "server.php";
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                        <a href="#">
+                                        <a href="examCard.php">
                                             <div class="col-auto">
                                                 <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                             </div>
@@ -450,7 +450,7 @@ include_once "server.php";
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">

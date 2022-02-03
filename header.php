@@ -31,7 +31,7 @@
     <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li> -->
   <li class="nav-item">
-    <a class="nav-link active" href="admin_dashboard.php" >Dashboard</a>
+    <a class="nav-link active" href="student_dashboard.php" >Dashboard</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="courseReg.php" style="color:#fff; font-weight: bold;">Course Registration</a>
