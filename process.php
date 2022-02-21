@@ -37,13 +37,13 @@
         //     array_push($errors, "Passwords Mismatched!");
         // }
         // To check whether user exist in the database
-        $query = "SELECT * FROM students WHERE fullName='$full_name' AND regNo ='$reg_num' LIMIT 1";
+        $query = "SELECT * FROM students WHERE regNo ='$reg_num'";
         $result = mysqli_query($server, $query);
-        $user = mysqli_fetch_assoc($result);
+        
 
-        if($user){
+        while($user = mysqli_fetch_assoc($result)){
             if($user['regNo']==$reg_num){
-                array_push($errors, "This Student already exist.");
+                array_push($errors, "Sorry, this Student already exist.");
 
             }
             // if($user['email']==$email){
