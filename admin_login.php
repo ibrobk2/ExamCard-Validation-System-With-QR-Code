@@ -171,6 +171,8 @@ $errors = array();
                 <input type="password" placeholder="Enter Password" class="form-control" name="password"><br>
                 <button class="btn btn-primary form-control" name="admin_login">Login</button><br>
             </form>
+            <p>Not Registered? Please register <a href="admin_reg.php">Here</a></p>
+
         </div>
     </div>
 </body>

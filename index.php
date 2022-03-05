@@ -6,7 +6,7 @@ $errors = array();
 
     include_once "server.php";
     // include_once "process.php";
-
+    
     
     ?>
 <!DOCTYPE html>

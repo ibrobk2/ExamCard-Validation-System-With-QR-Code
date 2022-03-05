@@ -1,62 +1,63 @@
 <?php  
 // initializing variables
 $username = "";
-$level   = "";
 $errors = array(); 
 include_once "server.php";
    // include_once "process.php";
 
-   if(isset($_POST['student_reg'])){
+   if(isset($_POST['admin_reg'])){
     //Variables Declaration
-    $reg_num = mysqli_real_escape_string($server, $_POST['regNo']);//Registration Number
-    $level = mysqli_real_escape_string($server, $_POST['level']);//student Level
-    $faculty = mysqli_real_escape_string($server, $_POST['faculty']); //Faculty
-    $department = mysqli_real_escape_string($server, $_POST['department']);//Department
-    $full_name = mysqli_real_escape_string($server, $_POST['fullName']);//Student Full Name
-    $password = mysqli_real_escape_string($server, $_POST['password']);//Password
-   
+
     
-    // Inputs validation: to ensure that the form is correctly filled ...
-    if(empty($reg_num)){array_push($errors, "Registration Number required");}
-    if(empty($level)){array_push($errors, "Level is required");}
-    if(empty($faculty)){array_push($errors, "Faculty is required");}
-    if(empty($department)){array_push($errors, "Department is required");}
-    if(empty($full_name)){array_push($errors, "Full Name is required");}
-    if(empty($password)){array_push($errors, "Password is required");}
+    
+        $username = mysqli_real_escape_string($server, $_POST['username']);//Username
+        $full_name = mysqli_real_escape_string($server, $_POST['fname']);//Student Full Name
+        $password = mysqli_real_escape_string($server, $_POST['password']);//Password
+        $cpassword = mysqli_real_escape_string($server, $_POST['cpassword']);//Password
 
+   
 
-
-    // if($password!=$password2){
-    //     array_push($errors, "Passwords Mismatched!");
-    // }
-    // To check whether user exist in the database
-    $query = "SELECT * FROM students WHERE regNo ='$reg_num' LIMIT 1";
-    $result = mysqli_query($server, $query);
-    $user = mysqli_fetch_assoc($result);
-
-    if($user){
-        if($user['regNo']==$reg_num){
-            array_push($errors, "Sorry, this Student already exist.");
-
+    
+        // Inputs validation: to ensure that the form is correctly filled ...
+        
+        if(empty($username)){array_push($errors, "Username is required");}
+        if(empty($full_name)){array_push($errors, "Full Name is required");}
+        if(empty($password)){array_push($errors, "Password is required");}
+        if(empty($cpassword)){array_push($errors, "Confirm Password is required");}
+    
+        if($password!=$cpassword){
+            array_push($errors, "Password and Confirm Password Mismatched!");
         }
-        // if($user['email']==$email){
-        //     array_push($errors, "Email already exist.");
 
-        // }
-    }
+
+
+    //   //To check whether user exist in the database
+    // $query = "SELECT * FROM users WHERE username ='$username'";
+    // $result = mysqli_query($server, $query);
+    
+
+    // if($row = mysqli_fetch_assoc($result)){
+
+      
+    //     if($row['username']==$username){
+    //         array_push($errors, "Sorry, this Username already exist.");
+
+    //     }
+      
+    
     // Finally register a student if there are no errors in the form
 
-if (count($errors) == 0) {
-//	$password = md5($password);//encrypt the password before saving in the database
+        if (count($errors) == 0) {
 
-  $query = "INSERT INTO `students`(`regNo`, `fullName`, `department`, `level`, `faculty`, `password`) VALUES('$reg_num', '$full_name', '$department', '$level', '$faculty', '$password')";
-  mysqli_query($server, $query);
+          $data = "INSERT INTO `users`(`id`, `username`, `password`, `fullName`) VALUES (NULL,'$username','$password','$full_name')";  
+          mysqli_query($server, $data);
 
-  header('location: index.php');
-  $_SESSION['regNo'] = $reg_num;
- $_SESSION['success'] = "Registration Successful, You can Now Login";
-}
-}
+            header('location: index.php');
+            $_SESSION['username'] = $username;
+          $_SESSION['success'] = "Registration Successful, You can Now Login";
+          }
+    //}
+   }
 
 ?>
 <!DOCTYPE html>
@@ -69,7 +70,7 @@ if (count($errors) == 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration Page</title>
+    <title>Admin Registration Page</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -226,39 +227,33 @@ h3{
         }
     </script>
 <div class="container" style="margin-top: 25px; color: white;">
-    <h3 style="color:green">Student Registration Form</h3>
+    <h3 style="color:green">Admin Registration Form</h3>
         <div class="form justify-centered">
 
-            <form action="student_reg.php" class="form-group" method="post">
+            <form action="admin_reg.php" class="form-group" method="post">
             <?php include("errors.php") ; ?>
             <!-- <?php //  include("process.php"); ?> -->
                
            
 
     <div class="row" style="padding: 5px; gap: 7px;">
-        <h4 style="color:#777;">Student Details</h3>
+        <h4 style="color:#777;">Admin Details</h3>
 
     </div>
     <hr style="border:2px double green;">
     <div class="row" style="padding: 5px; gap: 7px;">
-    <input type="text" placeholder="Registration Number" class="form-control col-sm" name="regNo">
-    <input type="text" placeholder="Full Name" class="form-control col-sm" name="fullName">
-        <select name="level" id="" class="form-control col-sm">
-          <option value="" >Select Level</option>
-          <option value="100">100</option>
-          <option value="200">200</option>
-          <option value="300">300</option>
-          <option value="400">400</option>
-        </select>
+    <input type="text" placeholder="Full Name" class="form-control col-sm" name="fname">
+
+    <input type="text" placeholder="Enter Username" class="form-control col-sm" name="username">
+        <!--  -->
 
     </div>
 
    
 
     <div class="row" >
-        <input type="text" placeholder="Faculty" class="form-control col-sm" name="faculty" style="border: solid 1px #517B97;">
-        <input type="text" placeholder="Department" class="form-control col-sm" name="department">
         <input type="password" placeholder="Choose Password" class="form-control col-sm" name="password">
+        <input type="password" placeholder="Confirm Password" class="form-control col-sm" name="cpassword">
 
     </div>
  
@@ -269,9 +264,9 @@ h3{
 
             
                 
-                <button class="btn btn-primary form-control" name="student_reg" style="width:60%; font-weight: bold; color: #fff; background: darkgreen; border:none; outline:none;margin-top:12px;" id="btn" onmouseover="hover();" onmouseout="mouseout();"><i class="fas fa-registered" style="font-size:20px;"></i>egister</button><br>
+                <button class="btn btn-primary form-control" name="admin_reg" style="width:60%; font-weight: bold; color: #fff; background: darkgreen; border:none; outline:none;margin-top:12px;" id="btn" onmouseover="hover();" onmouseout="mouseout();"><i class="fas fa-registered" style="font-size:20px;"></i>egister</button><br>
             </form>
-            <p style="color:green; font-weight:600;">Already Registered? Please Login <a href="student_login.php">Here</a></p>
+            <p style="color:green; font-weight:600;">Already Registered? Please Login <a href="admin_login.php">Here</a></p>
 
         </div>
 
